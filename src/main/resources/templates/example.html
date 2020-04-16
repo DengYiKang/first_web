@@ -1,0 +1,211 @@
+<html>
+
+<head>
+    <title>我的第一个 HTML 页面</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles/example.css" charset="UTF-8"/>
+</head>
+<!--这是注释哦-->
+<body background="https://www.w3school.com.cn/i/eg_background.jpg">
+<h1 align="center"><a name="top">居中的标题</a></h1>
+<hr/>
+<p>body 元素的内容会显示在浏览器中。</p>
+<p>title 元素的内容会显示在浏览器的标题栏中。</p>
+<p>
+    这个段落
+    在源 代码中
+    包含许 多行
+    但 是浏 览器
+    忽略了 它们。
+</p>
+
+<p>
+    To break<br/>lines<br>in a<br/>paragraph,<br/>use the br tag.
+</p>
+<a href="http://www.w3school.com.cn">
+    This is a link</a>
+<br/>
+<pre>
+这是
+预格式文本。
+它保留了      空格
+和换行。
+</pre>
+<br>************************************************************************************<br/>
+<img src="/static/images/img/f1_compared.png" width="150" height="150" align="center"/>
+<br/>
+<blockquote>
+    这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。这是长的引用。
+</blockquote>
+<q>
+    这是短的引用。
+</q>
+
+<p>
+    使用图像来作链接：
+    <a href="/example/html/lastpage.html">
+        <img border="0" src="..."/>
+    </a>
+</p>
+<p>如果把链接的 target 属性设置为 "_blank"，该链接会在新窗口中打开。</p>
+<a href="http://www.w3school.com.cn/" target="_blank">Visit W3School!</a>
+<a href="#top">回到最上方</a>
+
+<p>被锁在框架中了吗？</p>
+
+<a href="/index.html"
+   target="_top">请点击这里！</a>
+
+<h2>table：</h2>
+<table frame="hsides">
+    <caption>标题</caption>
+    <tr>
+        <th align="left">姓名</th>
+        <th>电话</th>
+        <th align="right">电话</th>
+    </tr>
+    <tr>
+        <td align="left"></td>
+        <td align="center">200</td>
+        <td align="right">300</td>
+    </tr>
+    <tr>
+        <td>400</td>
+        <td>500</td>
+        <td>600</td>
+    </tr>
+</table>
+
+<h2>一个无序列表：</h2>
+<ul>
+    <li>咖啡</li>
+    <li>茶</li>
+    <li>牛奶</li>
+</ul>
+<ol start="50">
+    <li>咖啡</li>
+    <li>牛奶</li>
+    <li>茶</li>
+</ol>
+
+<h2>字母列表：</h2>
+<ol type="A">
+    <li>苹果</li>
+    <li>香蕉</li>
+    <li>柠檬</li>
+    <li>桔子</li>
+</ol>
+
+<h2>一个嵌套列表：</h2>
+<ul>
+    <li>咖啡</li>
+    <li>茶
+        <ul>
+            <li>红茶</li>
+            <li>绿茶</li>
+        </ul>
+    </li>
+    <li>牛奶</li>
+</ul>
+
+<h2>一个定义列表：</h2>
+<dl>
+    <dt>计算机</dt>
+    <dd>用来计算的仪器 ... ...</dd>
+    <dt>显示器</dt>
+    <dd>以视觉方式显示信息的装置 ... ...</dd>
+</dl>
+
+<h2>表单</h2>
+<form action="www.baidu.com">
+    First name:<br>
+    <input type="text" name="user" value="Mickey">
+    <br>
+    Last name:<br>
+    <input type="password" name="password">
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<h2>单选框</h2>
+<form>
+    男性：
+    <input type="radio" checked="checked" name="Sex" value="male"/>
+    <br/>
+    女性：
+    <input type="radio" name="Sex" value="female"/>
+</form>
+
+<h2>复选框</h2>
+<form>
+    我喜欢自行车：
+    <input type="checkbox" name="Bike">
+    <br/>
+    我喜欢汽车：
+    <input type="checkbox" name="Car">
+</form>
+
+<h2>下拉列表</h2>
+<form>
+    <select name="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="fiat" selected="selected">Fiat</option>
+        <option value="audi">Audi</option>
+    </select>
+</form>
+
+<h2>按钮</h2>
+<form>
+    <input type="button" value="Hello world!">
+</form>
+<br>
+
+<h2>带框的输入</h2>
+<form>
+    <fieldset>
+        <legend>健康信息</legend>
+        身高：<input type="text"/>
+        体重：<input type="text"/>
+    </fieldset>
+</form>
+
+<h2>复选框的表单</h2>
+<form name="input" action="/index" method="get">
+    I have a bike:
+    <input type="checkbox" name="vehicle" value="Bike" checked="checked"/>
+    <br/>
+    I have a car:
+    <input type="checkbox" name="vehicle" value="Car"/>
+    <br/>
+    I have an airplane:
+    <input type="checkbox" name="vehicle" value="Airplane"/>
+    <br/><br/>
+    <input type="submit" value="Submit"/>
+</form>
+
+<h2>插入图像</h2>
+<p>
+    一幅图像：
+    <img src="https://www.w3school.com.cn/i/eg_mouse.jpg" width="128" height="128"/>
+</p>
+<p>
+    一幅动画图像：
+    <img src="https://www.w3school.com.cn/i/eg_cute.gif" width="50" height="50"/>
+</p>
+<p>请注意，插入动画图像的语法与插入普通图像的语法没有区别。</p>
+
+<h3>图像背景</h3>
+<p>gif 和 jpg 文件均可用作 HTML 背景。</p>
+<p>如果图像小于页面，图像会进行重复。</p>
+
+<h2>已设置对齐方式的图像：</h2>
+<p>图像 <img src="/i/eg_cute.gif" align="left"> 在文本中</p>
+<p>图像 <img src="/i/eg_cute.gif" align="middle"> 在文本中</p>
+<p>图像 <img src="/i/eg_cute.gif" align="top"> 在文本中</p>
+<p>请注意，bottom 对齐方式是默认的对齐方式。</p>
+
+<h2>图像加载不出来时显示文字</h2>
+<img src="/i/eg_goleft123.gif" alt="向左转" />
+
+</body>
+</html>

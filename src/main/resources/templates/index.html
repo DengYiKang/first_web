@@ -1,74 +1,428 @@
-#parse("header.html")
-    <div class="zg-wrap zu-main clearfix " role="main">
-        <div class="zu-main-content">
-            <div class="zu-main-content-inner">
-                <div class="zg-section" id="zh-home-list-title">
-                    <i class="zg-icon zg-icon-feedlist"></i>最新动态
-                    <input type="hidden" id="is-topstory">
-                    <span class="zg-right zm-noti-cleaner-setting" style="list-style:none">
-                        <a href="https://nowcoder.com/settings/filter" class="zg-link-gray-normal">
-                            <i class="zg-icon zg-icon-settings"></i>设置</a></span>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="/static/styles/me.css">
+</head>
+<body>
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-tb-mini">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+            <div class="right m-item item m-mobile-hide">
+                <div class="ui icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
                 </div>
-                <div class="zu-main-feed-con navigable" data-feedtype="topstory" id="zh-question-list" data-widget="navigable" data-navigable-options="{&quot;items&quot;:&quot;&gt; .zh-general-list .feed-content&quot;,&quot;offsetTop&quot;:-82}">
-                    <a href="javascript:;" class="zu-main-feed-fresh-button" id="zh-main-feed-fresh-button" style="display:none"></a>
-                    <div id="js-home-feed-list" class="zh-general-list topstory clearfix" data-init="{&quot;params&quot;: {}, &quot;nodename&quot;: &quot;TopStory2FeedList&quot;}" data-delayed="true" data-za-module="TopStoryFeedList">
-
-                        #foreach($vo in $vos)
-                        <div class="feed-item folding feed-item-hook feed-item-2
-                        " feed-item-a="" data-type="a" id="feed-2" data-za-module="FeedItem" data-za-index="">
-                            <meta itemprop="ZReactor" data-id="389034" data-meta="{&quot;source_type&quot;: &quot;promotion_answer&quot;, &quot;voteups&quot;: 4168, &quot;comments&quot;: 69, &quot;source&quot;: []}">
-                            <div class="feed-item-inner">
-                                <div class="avatar">
-                                    <a title="$!{vo.user.name}" data-tip="p$t$amuro1230" class="zm-item-link-avatar" target="_blank" href="https://nowcoder.com/people/amuro1230">
-                                        <img src="$!{vo.user.headUrl}" class="zm-item-img-avatar"></a>
-                                </div>
-                                <div class="feed-main">
-                                    <div class="feed-content" data-za-module="AnswerItem">
-                                        <meta itemprop="answer-id" content="389034">
-                                        <meta itemprop="answer-url-token" content="13174385">
-                                        <h2 class="feed-title">
-                                            <a class="question_link" target="_blank" href="/question/$!{vo.question.id}">$!{vo.question.title}</a></h2>
-                                        <div class="feed-question-detail-item">
-                                            <div class="question-description-plain zm-editable-content"></div>
-                                        </div>
-                                        <div class="expandable entry-body">
-                                            <div class="zm-item-vote">
-                                                <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;" data-bind-votecount="">4168</a></div>
-                                            <div class="zm-item-answer-author-info">
-                                                <a class="author-link" data-tip="p$b$amuro1230" target="_blank" href="/user/$!{vo.user.id}">$!{vo.user.name}</a>
-                                                ，$date.format('yyyy-MM-dd HH:mm:ss', $!{vo.question.createdDate})</div>
-                                            <div class="zm-item-vote-info" data-votecount="4168" data-za-module="VoteInfo">
-                                                <span class="voters text">
-                                                    <a href="#" class="more text">
-                                                        <span class="js-voteCount">4168</span>&nbsp;人赞同</a></span>
-                                            </div>
-                                            <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="123114" data-action="/answer/content" data-author-name="李淼" data-entry-url="/question/19857995/answer/13174385">
-                                                <div class="zh-summary summary clearfix">${vo.question.content}</div>
-                                            </div>
-                                        </div>
-                                        <div class="feed-meta">
-                                            <div class="zm-item-meta answer-actions clearfix js-contentActions">
-                                                <div class="zm-meta-panel">
-                                                    <a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-123114">
-                                                        <i class="z-icon-follow"></i>关注问题</a>
-                                                    <a href="#" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
-                                                        <i class="z-icon-comment"></i>${vo.question.commentCount} 条评论</a>
-
-
-                                                    <button class="meta-item item-collapse js-collapse">
-                                                        <i class="z-icon-fold"></i>收起</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        #end
-                    </div>
-                    <a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a></div>
             </div>
         </div>
     </div>
-#parse("footer.html")
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!--中间内容-->
+<div class="m-container m-padded-tb-large">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <!--左边博客列表-->
+            <div class="eleven wide column">
+                <!--header-->
+                <div class="ui attached segment">
+                    <div class="ui middle aligned two column grid">
+                        <div class="column">
+                            <h3 class="ui teal header">博客</h3>
+                        </div>
+                        <div class="right aligned column">
+                            共 <h3 class="ui orange header m-inline-block m-text-thin">10</h3> 篇博客
+                        </div>
+                    </div>
+                </div>
+                <!--content list-->
+                <div class="ui attached segment">
+                    <div class="ui padded vertical segment m-padded-tb-large">
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">这是一个标题</h3>
+                                <p class="m-text">
+                                    正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui mini horizontal link list">
+                                            <div class="item">
+                                                <img src="/static/images/avatar.png" alt="" class="ui avatar image">
+                                                <div class="content"><a href="#" class="ui header">yikang</a></div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-04-01
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>2333
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" class="ui teal basic label m-padded-tiny m-text-thin"
+                                           target="_blank">认知升级</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/show.png" alt="" class="ui rounded"
+                                         style="width:90%;height: 70%">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui padded vertical segment m-padded-tb-large">
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">这是一个标题</h3>
+                                <p class="m-text">
+                                    正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui mini horizontal link list">
+                                            <div class="item">
+                                                <img src="/static/images/avatar.png" alt="" class="ui avatar image">
+                                                <div class="content"><a href="#" class="ui header">yikang</a></div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-04-01
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>2333
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" class="ui teal basic label m-padded-tiny m-text-thin"
+                                           target="_blank">认知升级</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/show.png" alt="" class="ui rounded"
+                                         style="width:90%;height: 70%">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui padded vertical segment m-padded-tb-large">
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">这是一个标题</h3>
+                                <p class="m-text">
+                                    正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui mini horizontal link list">
+                                            <div class="item">
+                                                <img src="/static/images/avatar.png" alt="" class="ui avatar image">
+                                                <div class="content"><a href="#" class="ui header">yikang</a></div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-04-01
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>2333
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" class="ui teal basic label m-padded-tiny m-text-thin"
+                                           target="_blank">认知升级</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/show.png" alt="" class="ui rounded"
+                                         style="width:90%;height: 70%">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui padded vertical segment m-padded-tb-large">
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">这是一个标题</h3>
+                                <p class="m-text">
+                                    正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui mini horizontal link list">
+                                            <div class="item">
+                                                <img src="/static/images/avatar.png" alt="" class="ui avatar image">
+                                                <div class="content"><a href="#" class="ui header">yikang</a></div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-04-01
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>2333
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" class="ui teal basic label m-padded-tiny m-text-thin"
+                                           target="_blank">认知升级</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/show.png" alt="" class="ui rounded"
+                                         style="width:90%;height: 70%">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui padded vertical segment m-padded-tb-large">
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">这是一个标题</h3>
+                                <p class="m-text">
+                                    正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui mini horizontal link list">
+                                            <div class="item">
+                                                <img src="/static/images/avatar.png" alt="" class="ui avatar image">
+                                                <div class="content"><a href="#" class="ui header">yikang</a></div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-04-01
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>2333
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" class="ui teal basic label m-padded-tiny m-text-thin"
+                                           target="_blank">认知升级</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/show.png" alt="" class="ui rounded"
+                                         style="width:90%;height: 70%">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui padded vertical segment m-padded-tb-large">
+                        <div class="ui grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">这是一个标题</h3>
+                                <p class="m-text">
+                                    正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui mini horizontal link list">
+                                            <div class="item">
+                                                <img src="/static/images/avatar.png" alt="" class="ui avatar image">
+                                                <div class="content"><a href="#" class="ui header">yikang</a></div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020-04-01
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>2333
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" class="ui teal basic label m-padded-tiny m-text-thin"
+                                           target="_blank">认知升级</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="/static/images/show.png" alt="" class="ui rounded"
+                                         style="width:90%;height: 70%">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--bottom-->
+                <div class="ui bottom attached segment">
+                    <div class="ui middle aligned two column grid">
+                        <div class="column">
+                            <a href="#" class="ui teal mini basic button">上一页</a>
+                        </div>
+                        <div class="right aligned column">
+                            <a href="#" class="ui teal mini basic button">下一页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--右边top-->
+            <div class="five wide column">
+                <!--分类-->
+                <div class="ui segments">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="idea icon"></i>分类
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" target="_blank">more <i
+                                        class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui teal segment">
+                        <div class="ui fluid vertical menu">
+                            <a href="#" class="item" target="_blank">
+                                学习日志
+                                <div class="ui teal basic left pointing label">13</div>
+                            </a>
+                            <a href="#" class="item" target="_blank">
+                                学习日志
+                                <div class="ui teal basic left pointing label">13</div>
+                            </a>
+                            <a href="#" class="item" target="_blank">
+                                学习日志
+                                <div class="ui teal basic left pointing label">13</div>
+                            </a>
+                            <a href="#" class="item" target="_blank">
+                                学习日志
+                                <div class="ui teal basic left pointing label">13</div>
+                            </a>
+                            <a href="#" class="item" target="_blank">
+                                学习日志
+                                <div class="ui teal basic left pointing label">13</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--标签-->
+                <div class="ui segments m-margin-top-large">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="tags icon"></i>标签
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui teal segment">
+                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                            方法论
+                            <div class="detail">23</div>
+                        </a>
+                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                            方法论
+                            <div class="detail">23</div>
+                        </a>
+                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                            方法论
+                            <div class="detail">23</div>
+                        </a>
+                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                            方法论
+                            <div class="detail">23</div>
+                        </a>
+                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                            方法论
+                            <div class="detail">23</div>
+                        </a>
+                    </div>
+                </div>
+                <!--最新推荐-->
+                <div class="ui segments m-margin-top-large">
+                    <div class="ui secondary segment">
+                        <div class="column">
+                            <i class="bookmark icon"></i>最新推荐
+                        </div>
+                    </div>
+                    <div href="#" class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
+                    </div>
+                    <div href="#" class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
+                    </div>
+                    <div href="#" class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
+                    </div>
+                    <div href="#" class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
+                    </div>
+                    <div href="#" class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">用户故事</a>
+                    </div>
+                </div>
+                <!--二维码-->
+                <h4 class="ui horizontal divider header m-margin-top-large">扫码关注我</h4>
+                <div class="ui centered card" style="width: 11em">
+                    <img src="/static/images/wechat.png" alt=""
+                         class="ui rounded image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--底部-->
+<footer class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided  stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="/static/images/wechat.png" class="ui rounded image" alt="" style="width:100px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">User Story</a>
+                    <a href="#" class="item">User Story</a>
+                    <a href="#" class="item">User Story</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item m-text-thin">Email：yikangboy@gmail.com</a>
+                    <a href="#" class="item m-text-thin">QQ：1131487340</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">Blog</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">
+                    个人博客个人博客个人博客个人博客个人博客个人博客个人博客个人博客个人博客个人博客个人博客个人博客个人博客个人博客个人博客</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-mini">Copyright © 2019-2020 Designed by yikang</p>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+</script>
+</body>
+</html>

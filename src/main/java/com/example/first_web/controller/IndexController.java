@@ -20,10 +20,33 @@ public class IndexController {
     WendaService wendaService;
 
     @RequestMapping(path = {"/", "/index"})
-    @ResponseBody
     public String index(HttpSession httpSession) {
-        return "hello " + httpSession.getAttribute("msg")
-                + wendaService.getMessage(1);
+        return "index";
+    }
+
+    @RequestMapping(path = {"/blog"})
+    public String blog() {
+        return "blog";
+    }
+
+    @RequestMapping(path = {"/types"})
+    public String types() {
+        return "types";
+    }
+
+    @RequestMapping(path = {"/tags"})
+    public String tags() {
+        return "tags";
+    }
+
+    @RequestMapping(path = {"/archives"})
+    public String archives() {
+        return "archives";
+    }
+
+    @RequestMapping(path = {"/about"})
+    public String about() {
+        return "about";
     }
 
     @RequestMapping(path = {"/profile/{userId}"})
@@ -54,7 +77,7 @@ public class IndexController {
     }
 
     @RequestMapping(path = {"/header"})
-    public String header(){
+    public String header() {
         return "header";
     }
 
@@ -65,6 +88,11 @@ public class IndexController {
             return "hello admin!";
         }
         throw new IllegalArgumentException("illegal argument");
+    }
+
+    @RequestMapping(path = {"/example"})
+    public String example() {
+        return "example";
     }
 
     @ExceptionHandler()
