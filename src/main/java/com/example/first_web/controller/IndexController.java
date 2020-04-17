@@ -49,6 +49,16 @@ public class IndexController {
         return "about";
     }
 
+    @RequestMapping(path = {"/blogs"})
+    public String blogs() {
+        return "/admin/blogs";
+    }
+
+    @RequestMapping(path = {"/input"})
+    public String input() {
+        return "/admin/blogs-input";
+    }
+
     @RequestMapping(path = {"/profile/{userId}"})
     @ResponseBody
     public String profile(@PathVariable("userId") int userId,
@@ -62,7 +72,7 @@ public class IndexController {
         model.addAttribute("value1", "aaaa");
         model.addAttribute("list1", color);
         model.addAttribute("user", new User("yikang"));
-        return "home";
+        return "/admin/example";
     }
 
     @RequestMapping(path = {"/redirect/{code}"})
@@ -92,7 +102,7 @@ public class IndexController {
 
     @RequestMapping(path = {"/example"})
     public String example() {
-        return "example";
+        return "/admin/example";
     }
 
     @ExceptionHandler()
