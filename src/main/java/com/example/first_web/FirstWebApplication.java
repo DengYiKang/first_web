@@ -15,12 +15,12 @@ public class FirstWebApplication {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(FirstWebApplication.class, args);
-        String[] beanNames = ctx.getBeanDefinitionNames();
-        logger.info("bean总数:{}", ctx.getBeanDefinitionCount());
-        int i = 0;
-        for (String str : beanNames) {
-            logger.info("{},beanName:{}", ++i, str);
-        }
+//        String[] beanNames = ctx.getBeanDefinitionNames();
+//        logger.info("bean总数:{}", ctx.getBeanDefinitionCount());
+//        int i = 0;
+//        for (String str : beanNames) {
+//            logger.info("{},beanName:{}", ++i, str);
+//        }
     }
 
 
