@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!--包含Spring boot对logback日志的默认配置-->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!--    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>-->
+    <!--没引入该资源的话，后面的<fileNamePattern>标签下的${LOG_PATH}获取不到。-->
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <!-- 控制台设置 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!--重写了Spring Boot框架 org/springframework/boot/logging/logback/file-appender.xml 配置-->
+    <!--info-->
+    <appender name="infoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 文件路径 ，注意LOG_PATH是默认值，
+            它的配置对应application.properties里的logging.path值-->
+        <file>${LOG_PATH}/info/info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${LOG_PATH}/info/info-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <!-- 文件最大保存历史数量 -->
+            <MaxHistory>30</MaxHistory>
+            <!--
+            Spring Boot默认情况下，日志文件10M时，会切分日志文件,这样设置日志文件会在5M时切分日志
+            -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <!--Log4j2的属性。
+        onMatch="ACCEPT" 表示匹配该级别及以上
+        onMismatch="DENY" 表示不匹配该级别以下的-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- DEBUG -->
+    <appender name="debugAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 文件路径 ，注意LOG_PATH是默认值，
+            它的配置对应application.properties里的logging.path值-->
+        <file>${LOG_PATH}/debug/debug.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${LOG_PATH}/debug/debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- 文件最大保存历史数量 -->
+            <MaxHistory>30</MaxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- WARN -->
+    <appender name="warnAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 文件路径 ，注意LOG_PATH是默认值，
+            它的配置对应application.properties里的logging.path值-->
+        <file>${LOG_PATH}/warn/warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${LOG_PATH}/warn/warn-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <!-- 文件最大保存历史数量 -->
+            <MaxHistory>30</MaxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- ERROR -->
+    <appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 文件路径 ，注意LOG_PATH是默认值，
+            它的配置对应application.properties里的logging.path值-->
+        <file>${LOG_PATH}/error/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 文件名称 -->
+            <fileNamePattern>${LOG_PATH}/error/error-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <!-- 文件最大保存历史数量 -->
+            <MaxHistory>30</MaxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!-- 由于启动的时候，以下两个包下打印debug级别日志很多 ，所以调到ERROR-->
+    <logger name="org.springframework" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="errorAppender"/>
+    </logger>
+
+    <logger name="org.apache.tomcat.util" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="errorAppender"/>
+    </logger>
+
+    <!-- 默认spring boot导入hibernate很多的依赖包，启动的时候，会有hibernate相关的内容，直接去除 -->
+    <logger name="org.hibernate.validator" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="errorAppender"/>
+    </logger>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="infoAppender"/>
+        <appender-ref ref="debugAppender"/>
+        <appender-ref ref="warnAppender"/>
+        <appender-ref ref="errorAppender"/>
+    </root>
+
+
+</configuration>
+        <!--
+            1、继承Spring boot logback设置（可以在appliaction.yml或者application.properties设置logging.*属性）
+            2、重写了默认配置，设置日志文件大小在100MB时，按日期切分日志，切分后目录：
+
+                my.2017-08-01.0   80MB
+                my.2017-08-01.1   10MB
+                my.2017-08-02.0   56MB
+                my.2017-08-03.0   53MB
+                ......
+        -->

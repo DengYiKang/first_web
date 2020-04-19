@@ -102,12 +102,13 @@ public class IndexController {
 
     @RequestMapping(path = {"/example"})
     public String example() {
+        int i = 9 / 0;
         return "/admin/example";
     }
 
-    @ExceptionHandler()
-    @ResponseBody
-    public String error(Exception e) {
-        return "error: " + e.getMessage();
-    }
+//    @ExceptionHandler()
+//    @ResponseBody
+//    public String error(Exception e) {
+//        return "error: " + e.getMessage();
+//    }
 }
