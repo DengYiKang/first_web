@@ -81,19 +81,6 @@ public class IndexController {
         return red;
     }
 
-    @RequestMapping(path = {"/header"})
-    public String header() {
-        return "header";
-    }
-
-    @RequestMapping(path = {"/admin"})
-    @ResponseBody
-    public String admin(@RequestParam("key") String key) {
-        if ("admin".equals(key)) {
-            return "hello admin!";
-        }
-        throw new IllegalArgumentException("illegal argument");
-    }
 
     @RequestMapping(path = {"/example"})
     public String example() {
