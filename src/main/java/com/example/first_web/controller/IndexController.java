@@ -1,7 +1,5 @@
 package com.example.first_web.controller;
 
-import com.example.first_web.model.User;
-import com.example.first_web.service.WendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -16,8 +14,6 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-    @Autowired
-    WendaService wendaService;
 
     @RequestMapping(path = {"/", "/index"})
     public String index(HttpSession httpSession) {
@@ -71,7 +67,6 @@ public class IndexController {
         List<String> color = Arrays.asList(new String[]{"red", "green", "yellow"});
         model.addAttribute("value1", "aaaa");
         model.addAttribute("list1", color);
-        model.addAttribute("user", new User("yikang"));
         return "/admin/example";
     }
 

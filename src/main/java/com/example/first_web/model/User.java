@@ -1,22 +1,57 @@
 package com.example.first_web.model;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+
+@Entity
+@Table(name = "t_user")
 public class User {
-    private int id;
-    private String name;
+
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String nickname;
+    private String username;
     private String password;
-    private String salt;
-    private String headUrl;
+    private String email;
+    private String avatar;
+    private Integer type;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createTime;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateTime;
+
+    @OneToMany(mappedBy = "user")
+    private List<Blog> blogs = new ArrayList<>();
 
     public User() {
-
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -27,31 +62,67 @@ public class User {
         this.password = password;
     }
 
-    public String getSalt() {
-        return salt;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getHeadUrl() {
-        return headUrl;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setHeadUrl(String headUrl) {
-        this.headUrl = headUrl;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public User(String name) {
-        this.name = name;
+    public Integer getType() {
+        return type;
     }
 
-    public String getName() {
-        return name;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", type=" + type +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }
