@@ -5,7 +5,25 @@
     <title>Error</title>
 </head>
 <body>
-<h1>Error</h1>
+<nav th:replace="_fragments :: menu(-1)"></nav>
+<br>
+<br>
+<br>
+
+<div class="m-container-small m-padded-tb-massive">
+    <div class="ui error message m-padded-tb-huge">
+        <div class="ui contianer">
+            <h2>500</h2>
+            <p>对不起，服务异常，请联系管理员</p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<nav th:replace="_fragments :: footer"></nav>
+
 <div>
     <div th:utext="'&lt;!--'" th:remove="tag"></div>
     <div th:utext="'Failed Request URL : ' + ${url}" th:remove="tag"></div>
