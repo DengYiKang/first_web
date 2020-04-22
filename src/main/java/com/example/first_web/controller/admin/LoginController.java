@@ -1,4 +1,4 @@
-package com.example.first_web.controller;
+package com.example.first_web.controller.admin;
 
 import com.example.first_web.model.User;
 import com.example.first_web.service.UserService;

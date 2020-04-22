@@ -42,6 +42,6 @@ public class MD5Utils {
 
 
     public static void main(String[] args) {
-        System.out.println(code("11111"));
+        System.out.println(code("1131487340"));
     }
 }
