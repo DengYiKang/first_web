@@ -1,9 +1,16 @@
 package com.example.first_web.dao;
 
 import com.example.first_web.model.Type;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-public interface TypeRepository extends JpaRepository<Type,Long> {
+import java.util.List;
+
+public interface TypeRepository extends JpaRepository<Type, Long> {
 
     Type findByName(String name);
+
+    @Query("select t from Type t")
+    List<Type> findTop(Pageable pageable);
 }
