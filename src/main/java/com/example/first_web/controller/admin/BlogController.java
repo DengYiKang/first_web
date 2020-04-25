@@ -55,7 +55,9 @@ public class BlogController {
     @GetMapping("/blogs/input")
     public String input(Model model) {
         setTypeAndTag(model);
-        model.addAttribute("blog", new Blog());
+        Blog b =new Blog();
+        b.setFlag("原创");
+        model.addAttribute("blog", b);
         return INPUT;
     }
 
