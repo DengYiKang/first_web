@@ -1,4 +1,4 @@
-package com.example.first_web.service;
+package com.example.first_web.utils;
 
 import org.commonmark.Extension;
 import org.commonmark.ext.gfm.tables.TableBlock;

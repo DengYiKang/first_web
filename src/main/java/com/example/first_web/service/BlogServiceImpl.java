@@ -5,6 +5,7 @@ import com.example.first_web.exception.NotFoundException;
 import com.example.first_web.model.Blog;
 import com.example.first_web.model.BlogQuery;
 import com.example.first_web.model.Type;
+import com.example.first_web.utils.MarkdownUtils;
 import com.example.first_web.utils.MyBeanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.findById(id).orElse(null);
     }
 
+    @Transactional
     @Override
     public Blog getAndConvert(Long id) {
         Blog blog = blogRepository.findById(id).orElse(null);
@@ -46,6 +48,7 @@ public class BlogServiceImpl implements BlogService {
         BeanUtils.copyProperties(blog, b);
         String content = b.getContent();
         b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+        blogRepository.updateViews(id);
         return b;
     }
 
