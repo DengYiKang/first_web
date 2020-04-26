@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>关于我</title>
@@ -11,9 +11,8 @@
 
 <!--导航-->
 <nav th:replace="_fragments :: menu(4)"></nav>
-
 <!--中间内容-->
-<div class="m-container m-padded-tb-big">
+<div class="m-container m-padded-tb-big animated fadeIn">
     <div class="ui container">
 
         <div class="ui stackable grid">
@@ -46,11 +45,9 @@
                     <div class="ui teal basic left pointing label m-margin-tb-tiny">...</div>
                 </div>
                 <div class="ui bottom attached segment">
-                    <a href="#" class="ui github circular icon button" data-content="https://github.com/DengYiKang"
-                       data-position="bottom center"><i
-                            class="github icon"></i></a>
+                    <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
                     <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
-                    <a href="#" class="ui qq circular icon button" data-content="1131487340"
+                    <a href="#" class="ui qq circular icon button" data-content="865729312"
                        data-position="bottom center"><i class="qq icon"></i></a>
                 </div>
 
@@ -67,9 +64,7 @@
 <br>
 <!--底部footer-->
 <footer th:replace="_fragments :: footer"></footer>
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<th:block th:replace="_fragments :: script"></th:block>
 
 <script>
     $('.menu.toggle').click(function () {
@@ -81,7 +76,6 @@
         position: 'bottom center'
     });
     $('.qq').popup();
-    $('.github').popup();
 
 </script>
 </body>
